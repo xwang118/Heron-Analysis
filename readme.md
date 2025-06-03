@@ -1,10 +1,5 @@
 # Heron Data Analysis: Bank of Small Business Implementation Review
 
-**🌐 Live Dashboard:** https://yourusername.github.io/heron-analysis  
-**📅 Analysis Date:** June 2025  
-**⏱️ Time Investment:** 2.5 hours  
-**👤 Analyst:** [Your Name]
-
 ## 🎯 Executive Summary
 
 **Key Question:** Is Heron working as expected for Bank of Small Business?
@@ -123,27 +118,6 @@ I structured the analysis around **4 key dimensions** that matter most to a bank
 - Foundation for advanced analytics and automation
 - Superior risk assessment capabilities
 
-## 📞 Contact
 
-**📧 Email:** [your.email@example.com]  
-**💼 LinkedIn:** [your-linkedin-profile]  
-**🐙 GitHub:** [github.com/yourusername](https://github.com/yourusername)
 
----
 
-## 🏷️ Tags
-
-`data-analysis` `financial-technology` `banking` `automation` `business-intelligence` `small-business-lending` `fintech`
-
----
-
-*This analysis was completed as part of the Heron Data take-home assessment. The findings demonstrate that Heron is successfully automating manual financial data extraction and analysis for Bank of Small Business, delivering exactly what was promised to the customer.*
-
-## 🔄 Updates
-
-- **June 2025:** Initial analysis completed
-- **Ready for:** Follow-up presentation and discussion
-
----
-
-⭐ **Star this repository** if you found the analysis approach helpful!
