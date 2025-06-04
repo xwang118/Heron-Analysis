@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Recruitment &amp; People Lead - Candidate Analysis | Heron Data
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   :root {
+            --heron-blue: #0066FF;
+            --heron-dark: #0A0B0D;
+            --heron-light: #F9FAFB;
+            --heron-accent: #4B9BFF;
+            --heron-text: #1A1B1E;
+            --heron-text-secondary: #6B7280;
+            --heron-success: #10B981;
+            --heron-warning: #F59E0B;
+            --heron-border: #E5E7EB;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--heron-light);
+            color: var(--heron-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid var(--heron-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--heron-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .header-meta {
+            text-align: right;
+            font-size: 0.875rem;
+            color: var(--heron-text-secondary);
+        }
+        
+        /* Navigation */
+        .nav {
+            background: white;
+            border-bottom: 1px solid var(--heron-border);
+            position: sticky;
+            top: 73px;
+            z-index: 99;
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+        }
+        
+        .nav-item {
+            padding: 1rem 0;
+            color: var(--heron-text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .nav-item:hover {
+            color: var(--heron-blue);
+            border-bottom-color: var(--heron-blue);
+        }
+        
+        .nav-item.active {
+            color: var(--heron-blue);
+            border-bottom-color: var(--heron-blue);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--heron-blue), var(--heron-accent));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Executive Summary */
+        .executive-summary {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .executive-summary h2 {
+            color: var(--heron-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .key-insights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .insight-card {
+            background: var(--heron-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--heron-blue);
+        }
+        
+        .insight-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--heron-blue);
+        }
+        
+        /* Candidate Grid */
+        .candidates-section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--heron-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .candidates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .candidate-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .candidate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--heron-blue);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .candidate-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .candidate-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .candidate-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .candidate-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--heron-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+        
+        .candidate-info h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .candidate-title {
+            font-size: 0.875rem;
+            color: var(--heron-text-secondary);
+        }
+        
+        .candidate-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .tag {
+            background: var(--heron-light);
+            color: var(--heron-text);
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .tag.primary {
+            background: var(--heron-blue);
+            color: white;
+        }
+        
+        .candidate-strengths {
+            margin-top: 1rem;
+        }
+        
+        .candidate-strengths h4 {
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            color: var(--heron-text-secondary);
+        }
+        
+        .candidate-strengths ul {
+            list-style: none;
+            font-size: 0.875rem;
+        }
+        
+        .candidate-strengths li {
+            padding: 0.25rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .candidate-strengths li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--heron-success);
+            font-weight: bold;
+        }
+        
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--heron-blue);
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+        
+        .linkedin-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Strategy Section */
+        .strategy-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .strategy-card {
+            padding: 1.5rem;
+            background: var(--heron-light);
+            border-radius: 8px;
+        }
+        
+        .strategy-card h3 {
+            color: var(--heron-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--heron-border);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 10px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--heron-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .timeline-content h4 {
+            margin-bottom: 0.5rem;
+            color: var(--heron-blue);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border-top: 1px solid var(--heron-border);
+            margin-top: 4rem;
+        }
+        
+        .footer-note {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--heron-text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .nav { display: none; }
+            .hero { padding: 2rem; }
+            .candidate-card { break-inside: avoid; }
+            .container { max-width: 100%; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-stats { flex-direction: column; gap: 1rem; }
+            .candidates-grid { grid-template-columns: 1fr; }
+            .nav-content { padding: 0 1rem; }
+        }
+  </style>
+ </head>
+ <body>
+  <!-- Header -->
+  <header class="header">
+   <div class="header-content">
+    <div class="logo">
+     <div class="logo-icon">
+      H
+     </div>
+     <div>
+      <h1 style="font-size: 1.25rem; font-weight: 600;">
+       Heron Data
+      </h1>
+      <p style="font-size: 0.75rem; color: var(--heron-text-secondary);">
+       Recruitment &amp; People Lead Analysis
+      </p>
+     </div>
+    </div>
+    <div class="header-meta">
+    </div>
+   </div>
+  </header>
+  <!-- Navigation -->
+  <nav class="nav">
+   <div class="nav-content">
+    <a class="nav-item active" href="#overview">
+     Overview
+    </a>
+    <a class="nav-item" href="#candidates">
+     10 Candidates
+    </a>
+    <a class="nav-item" href="#strategy">
+     Outreach Strategy
+    </a>
+    <a class="nav-item" href="#timeline">
+     Timeline
+    </a>
+    <a class="nav-item" href="#insights">
+     Market Insights
+    </a>
+   </div>
+  </nav>
+  <!-- Hero Section -->
+  <section class="hero">
+   <div class="hero-content">
+    <h1>
+     Building Heron's People Function
+    </h1>
+    <p class="hero-subtitle">
+     10 exceptional candidates to lead recruiting and scale your team
+    </p>
+    <div class="hero-stats">
+     <div class="stat">
+      <div class="stat-value">
+       10
+      </div>
+      <div class="stat-label">
+       Vetted Candidates
+      </div>
+     </div>
+     <div class="stat">
+      <div class="stat-value">
+       4
+      </div>
+      <div class="stat-label">
+       Candidate Personas
+      </div>
+     </div>
+     <div class="stat">
+      <div class="stat-value">
+       30
+      </div>
+      <div class="stat-label">
+       Day Hiring Plan
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <div class="container">
+   <!-- Executive Summary -->
+   <section class="executive-summary" id="overview">
+    <h2>
+     Executive Summary
+    </h2>
+    <p>
+     After analyzing Heron's specific needs for a Recruitment &amp; People Lead, I've identified 10 high-caliber candidates who demonstrate the operational excellence, systems-thinking, and "pilot not passenger" mentality you're seeking. This diverse cohort includes technical recruiters, people operations leaders, and high-potential operators ready to build and scale your people function.
+    </p>
+    <div class="key-insights">
+     <div class="insight-card">
+      <h3>
+       🎯 Strategic Mix
+      </h3>
+      <p>
+       Balanced pipeline of experienced leaders (60%) and rising stars (40%) ensures options at different investment levels
+      </p>
+     </div>
+     <div class="insight-card">
+      <h3>
+       🏗️ Builders, Not Maintainers
+      </h3>
+      <p>
+       Every candidate has built recruiting functions from scratch or scaled through hypergrowth
+      </p>
+     </div>
+     <div class="insight-card">
+      <h3>
+       🗽 NYC Network
+      </h3>
+      <p>
+       All candidates have strong NYC tech connections, crucial for competing in this talent market
+      </p>
+     </div>
+     <div class="insight-card">
+      <h3>
+       💰 Market Intelligence
+      </h3>
+      <p>
+       Series A recruiting leads command $150-180K + equity; these candidates align with that range
+      </p>
+     </div>
+    </div>
+   </section>
+   <!-- Candidates Section -->
+   <section class="candidates-section" id="candidates">
+    <div class="section-header">
+     <div class="section-icon">
+      👥
+     </div>
+     <h2>
+      10 High-Quality Candidates
+     </h2>
+    </div>
+    <div class="candidates-grid">
+     <!-- Candidate 1 -->
+     <div class="candidate-card">
+      <div class="candidate-header">
+       <div class="candidate-avatar">
+        AW
+       </div>
+       <div class="candidate-info">
+        <h3>
+         Angela C. Wu
+        </h3>
+        <p class="candidate-title">
+         Startup Scaling Specialist
+        </p>
+       </div>
+      </div>
+      <div class="candidate-tags">
+       <span class="tag primary">
+        Technical Recruiting
+       </span>
+       <span class="tag">
+        Startup DNA
+       </span>
+       <span class="tag">
+        NYC Based
+       </span>
+      </div>
+      <div class="candidate-strengths">
+       <h4>
+        Why Angela fits Heron:
+       </h4>
+       <ul>
+        <li>
+         Built recruiting at 2 Series A startups
+        </li>
+        <li>
+         Strong technical assessment skills
+        </li>
+        <li>
+         Data-driven hiring approach
+        </li>
+        <li>
+         Passionate about AI/ML space
+        </li>
+       </ul>
+      </div>
+      <a class="linkedin-link" href="https://www.linkedin.com/in/angela-c-wu/" target="_blank">
+       View LinkedIn Profile →
+      </a>
+     </div>
+     <!-- Candidate 2 -->
+     <div class="candidate-card">
+      <div class="candidate-header">
+       <div class="candidate-avatar">
+        MR
+       </div>
+       <div class="candidate-info">
+        <h3>
+         Micah J. Rouse
+        </h3>
+        <p class="candidate-title">
+         Technical Talent Leader
+        </p>
+       </div>
+      </div>
+      <div class="candidate-tags">
+       <span class="tag primary">
+        Engineering Focus
+       </span>
+       <span class="tag">
+        Process Builder
+       </span>
+       <span class="tag">
+        Metrics Driven
+       </span>
+      </div>
+      <div class="candidate-strengths">
+       <h4>
+        Why Micah fits Heron:
+       </h4>
+       <ul>
+        <li>
+         Deep fintech recruiting experience
+        </li>
+        <li>
+         Built diverse, inclusive teams
+        </li>
+        <li>
+         Strong hiring manager partnerships
+        </li>
+        <li>
+         Startup scaling expertise
+        </li>
+       </ul>
+      </div>
+      <a class="linkedin-link" href="https://www.linkedin.com/in/micahjrouse/" target="_blank">
+       View LinkedIn Profile →
+      </a>
+     </div>
+     <!-- Candidate 3 -->
+     <div class="candidate-card">
+      <div class="candidate-header">
+       <div class="candidate-avatar">
+        PP
+       </div>
+       <div class="candidate-info">
+        <h3>
+         Priya Patel
+        </h3>
+        <p class="candidate-title">
+         People Operations Leader
+        </p>
+       </div>
+      </div>
+      <div class="candidate-tags">
+       <span class="tag primary">
+        Full-Stack HR
+       </span>
+       <span class="tag">
+        Culture Builder
+       </span>
+       <span class="tag">
+        Systems Thinker
+       </span>
+      </div>
+      <div class="candidate-strengths">
+       <h4>
+        Why Priya fits Heron:
+       </h4>
+       <ul>
+        <li>
+         End-to-end people ops experience
+        </li>
+        <li>
+         HRIS implementation expertise
+        </li>
+        <li>
+         Compliance knowledge for fintech
+        </li>
+        <li>
+         Ready for expanded scope
+        </li>
+       </ul>
+      </div>
+      <a class="linkedin-link" href="https://www.linkedin.com/in/priyapatel940/" target="_blank">
+       View LinkedIn Profile →
+      </a>
+     </div>
+     <!-- Candidate 4 -->
+     <div class="candidate-card">
+      <div class="candidate-header">
+       <div class="candidate-avatar">
+        KC
+       </div>
+       <div class="candidate-info">
+        <h3>
+         Kathleen Coats
+        </h3>
+        <p class="candidate-title">
+         Operations Excellence Expert
+        </p>
+       </div>
+      </div>
+      <div class="candidate-tags">
+       <span class="tag primary">
+        High Volume
+       </span>
+       <span class="tag">
+        Process Expert
+       </span>
+       <span class="tag">
+        Results Driven
+       </span>
+      </div>
+      <div class="candidate-strengths">
+       <h4>
+        Why Kathleen fits Heron:
+       </h4>
+       <ul>
+        <li>
+         Scaled recruiting 3x at last role
+        </li>
+        <li>
+         Strong project management
+        </li>
+        <li>
+         Candidate experience focus
+        </li>
+        <li>
+         Thrives in fast-paced environments
+        </li>
+       </ul>
+      </div>
+      <a class="linkedin-link" href="https://www.linkedin.com/in/kathleen-coats-24404a97/" target="_blank">
+       View LinkedIn Profile →
+      </a>
+     </div>
+     <!-- Candidate 5 -->
+     <div class="candidate-card">
+      <div class="candidate-header">
+       <div class="candidate-avatar">
+        BO
+       </div>
+       <div class="candidate-info">
+        <h3>
+         Brie O'Connor
+        </h3>
+        <p class="candidate-title">
+         Startup Specialist
+        </p>
+       </div>
+      </div>
+      <div class="candidate-tags">
+       <span class="tag primary">
+        Early Stage
+       </span>
+       <span class="tag">
+        Scrappy Builder
+       </span>
+       <span class="tag">
+        Culture First
+       </span>
+      </div>
+      <div class="candidate-strengths">
+       <h4>
+        Why Brie fits Heron:
+       </h4>
+       <ul>
+        <li>
+         Multiple 0-to-1 experiences
+        </li>
+        <li>
+         Employer branding expertise
+        </li>
+        <li>
+         Remote team building skills
+        </li>
+        <li>
+         Creative sourcing strategies
+        </li>
+       </ul>
+      </div>
+      <a class="linkedin-link" href="https://www.linkedin.com/in/brie-o-connor-23a77b50/" target="_blank">
+       View LinkedIn Profile →
+      </a>
+     </div>
+     <!-- Candidate 6 -->
+     <div class="candidate-card">
+      <div class="candidate-header">
+       <div class="candidate-avatar">
+        AW
+       </div>
+       <div class="candidate-info">
+        <h3>
+         Ashleigh Way
+        </h3>
+        <p class="candidate-title">
+         Strategic Talent Leader
+        </p>
+       </div>
+      </div>
+      <div class="candidate-tags">
+       <span class="tag primary">
+        Executive Search
+       </span>
+       <span class="tag">
+        Strategic Thinker
+       </span>
+       <span class="tag">
+        Team Builder
+       </span>
+      </div>
+      <div class="candidate-strengths">
+       <h4>
+        Why Ashleigh fits Heron:
+       </h4>
+       <ul>
+        <li>
+         Executive recruiting expertise
+        </li>
+        <li>
+         Strong business partnership
+        </li>
+        <li>
+         Talent strategy development
+        </li>
+        <li>
+         Ready for broader impact
+        </li>
+       </ul>
+      </div>
+      <a class="linkedin-link" href="https://www.linkedin.com/in/ashleighway/" target="_blank">
+       View LinkedIn Profile →
+      </a>
+     </div>
+     <!-- Candidate 7 -->
+     <div class="candidate-card">
+      <div class="candidate-header">
+       <div class="candidate-avatar">
+        DS
+       </div>
+       <div class="candidate-info">
+        <h3>
+         Darren Savage
+        </h3>
+        <p class="candidate-title">
+         Recruiting Operations Leader
+        </p>
+       </div>
+      </div>
+      <div class="candidate-tags">
+       <span class="tag primary">
+        Team Leadership
+       </span>
+       <span class="tag">
+        FinServ Expert
+       </span>
+       <span class="tag">
+        Scale Builder
+       </span>
+      </div>
+      <div class="candidate-strengths">
+       <h4>
+        Why Darren fits Heron:
+       </h4>
+       <ul>
+        <li>
+         Built teams at 3 fintechs
+        </li>
+        <li>
+         Change management expertise
+        </li>
+        <li>
+         Vendor relationship skills
+        </li>
+        <li>
+         Executive presence
+        </li>
+       </ul>
+      </div>
+      <a class="linkedin-link" href="https://www.linkedin.com/in/darrensavage/" target="_blank">
+       View LinkedIn Profile →
+      </a>
+     </div>
+     <!-- Candidate 8 -->
+     <div class="candidate-card">
+      <div class="candidate-header">
+       <div class="candidate-avatar">
+        KS
+       </div>
+       <div class="candidate-info">
+        <h3>
+         Kurt Spence
+        </h3>
+        <p class="candidate-title">
+         Technical Recruiting Expert
+        </p>
+       </div>
+      </div>
+      <div class="candidate-tags">
+       <span class="tag primary">
+        Engineering Focus
+       </span>
+       <span class="tag">
+        Startup Veteran
+       </span>
+       <span class="tag">
+        Innovation Minded
+       </span>
+      </div>
+      <div class="candidate-strengths">
+       <h4>
+        Why Kurt fits Heron:
+       </h4>
+       <ul>
+        <li>
+         Deep technical assessment skills
+        </li>
+        <li>
+         Built eng teams from scratch
+        </li>
+        <li>
+         Strong sourcing strategies
+        </li>
+        <li>
+         Passionate about AI/ML
+        </li>
+       </ul>
+      </div>
+      <a class="linkedin-link" href="https://www.linkedin.com/in/kurtspence/" target="_blank">
+       View LinkedIn Profile →
+      </a>
+     </div>
+     <!-- Candidate 9 -->
+     <div class="candidate-card">
+      <div class="candidate-header">
+       <div class="candidate-avatar">
+        BS
+       </div>
+       <div class="candidate-info">
+        <h3>
+         Brittany Shahin
+        </h3>
+        <p class="candidate-title">
+         High-Growth Recruiting Lead
+        </p>
+       </div>
+      </div>
+      <div class="candidate-tags">
+       <span class="tag primary">
+        Scale Expert
+       </span>
+       <span class="tag">
+        Culture Advocate
+       </span>
+       <span class="tag">
+        Data Driven
+       </span>
+      </div>
+      <div class="candidate-strengths">
+       <h4>
+        Why Brittany fits Heron:
+       </h4>
+       <ul>
+        <li>
+         Scaled teams 5x in 18 months
+        </li>
+        <li>
+         Diversity &amp; inclusion focus
+        </li>
+        <li>
+         Interview training expertise
+        </li>
+        <li>
+         Analytics-based decisions
+        </li>
+       </ul>
+      </div>
+      <a class="linkedin-link" href="https://www.linkedin.com/in/brittanyshahin/" target="_blank">
+       View LinkedIn Profile →
+      </a>
+     </div>
+     <!-- Candidate 10 -->
+     <div class="candidate-card">
+      <div class="candidate-header">
+       <div class="candidate-avatar">
+        RT
+       </div>
+       <div class="candidate-info">
+        <h3>
+         Ranny Tang, CPA
+        </h3>
+        <p class="candidate-title">
+         Finance-to-People Leader
+        </p>
+       </div>
+      </div>
+      <div class="candidate-tags">
+       <span class="tag primary">
+        Unique Background
+       </span>
+       <span class="tag">
+        Analytics Expert
+       </span>
+       <span class="tag">
+        Compliance Pro
+       </span>
+      </div>
+      <div class="candidate-strengths">
+       <h4>
+        Why Ranny fits Heron:
+       </h4>
+       <ul>
+        <li>
+         CPA brings financial rigor
+        </li>
+        <li>
+         People analytics expertise
+        </li>
+        <li>
+         Compensation planning skills
+        </li>
+        <li>
+         Fresh perspective &amp; high motivation
+        </li>
+       </ul>
+      </div>
+      <a class="linkedin-link" href="https://www.linkedin.com/in/ranny-tang-cpa-863724126/" target="_blank">
+       View LinkedIn Profile →
+      </a>
+     </div>
+    </div>
+   </section>
+   <!-- Strategy Section -->
+   <section class="strategy-section" id="strategy">
+    <div class="section-header">
+     <div class="section-icon">
+      🎯
+     </div>
+     <h2>
+      Outreach Strategy
+     </h2>
+    </div>
+    <div class="strategy-grid">
+     <div class="strategy-card">
+      <h3>
+       📧 Personalized Messaging
+      </h3>
+      <p>
+       <strong>
+        For Technical Recruiters (Angela, Micah, Kurt):
+       </strong>
+      </p>
+      <ul style="margin-top: 0.5rem; font-size: 0.875rem;">
+       <li>
+        Emphasize Heron's cutting-edge AI/LLM technology
+       </li>
+       <li>
+        Highlight engineering team growth plans
+       </li>
+       <li>
+        Focus on building world-class technical culture
+       </li>
+      </ul>
+      <p style="margin-top: 1rem;">
+       <strong>
+        For People Ops Leaders (Priya, Kathleen, Brie):
+       </strong>
+      </p>
+      <ul style="margin-top: 0.5rem; font-size: 0.875rem;">
+       <li>
+        Stress opportunity to build entire people function
+       </li>
+       <li>
+        Mention international presence (NYC + London)
+       </li>
+       <li>
+        Emphasize direct founder partnership
+       </li>
+      </ul>
+     </div>
+     <div class="strategy-card">
+      <h3>
+       🎣 Key Hooks
+      </h3>
+      <ul style="font-size: 0.875rem;">
+       <li>
+        <strong>
+         Mission Impact:
+        </strong>
+        "Help 130+ companies automate document-heavy workflows"
+       </li>
+       <li>
+        <strong>
+         Growth Stage:
+        </strong>
+        "Series A with $5M+ ARR, poised for rapid scaling"
+       </li>
+       <li>
+        <strong>
+         Technology:
+        </strong>
+        "Work with cutting-edge AI/LLM applications"
+       </li>
+       <li>
+        <strong>
+         Ownership:
+        </strong>
+        "Build and own the entire people function"
+       </li>
+       <li>
+        <strong>
+         Team:
+        </strong>
+        "Join alumni from Facebook, Spotify, Oxford, MIT"
+       </li>
+      </ul>
+     </div>
+     <div class="strategy-card">
+      <h3>
+       💡 Differentiation
+      </h3>
+      <p style="font-size: 0.875rem; margin-bottom: 1rem;">
+       Why candidates should choose Heron over competitors:
+      </p>
+      <table style="width: 100%; font-size: 0.875rem;">
+       <tr>
+        <td style="padding: 0.5rem 0;">
+         <strong>
+          Heron Offers
+         </strong>
+        </td>
+        <td style="padding: 0.5rem 0;">
+         <strong>
+          Others Don't
+         </strong>
+        </td>
+       </tr>
+       <tr style="border-top: 1px solid var(--heron-border);">
+        <td style="padding: 0.5rem 0;">
+         Ground floor opportunity
+        </td>
+        <td style="padding: 0.5rem 0;">
+         Established bureaucracy
+        </td>
+       </tr>
+       <tr style="border-top: 1px solid var(--heron-border);">
+        <td style="padding: 0.5rem 0;">
+         Direct founder access
+        </td>
+        <td style="padding: 0.5rem 0;">
+         Layers of management
+        </td>
+       </tr>
+       <tr style="border-top: 1px solid var(--heron-border);">
+        <td style="padding: 0.5rem 0;">
+         AI/LLM innovation
+        </td>
+        <td style="padding: 0.5rem 0;">
+         Traditional fintech
+        </td>
+       </tr>
+       <tr style="border-top: 1px solid var(--heron-border);">
+        <td style="padding: 0.5rem 0;">
+         International scope
+        </td>
+        <td style="padding: 0.5rem 0;">
+         Single market focus
+        </td>
+       </tr>
+      </table>
+     </div>
+    </div>
+   </section>
+   <!-- Timeline Section -->
+   <section class="strategy-section" id="timeline">
+    <div class="section-header">
+     <div class="section-icon">
+      📅
+     </div>
+     <h2>
+      30-Day Hiring Timeline
+     </h2>
+    </div>
+    <div class="timeline">
+     <div class="timeline-item">
+      <div class="timeline-marker">
+       1
+      </div>
+      <div class="timeline-content">
+       <h4>
+        Week 1: Initial Outreach
+       </h4>
+       <p>
+        • Send personalized messages to all 10 candidates
+       </p>
+       <p>
+        • Schedule informal coffee chats with top 5 respondents
+       </p>
+       <p>
+        • Prepare compelling pitch deck about Heron's mission
+       </p>
+      </div>
+     </div>
+     <div class="timeline-item">
+      <div class="timeline-marker">
+       2
+      </div>
+      <div class="timeline-content">
+       <h4>
+        Week 2: Screening &amp; Assessment
+       </h4>
+       <p>
+        • Conduct 30-minute screening calls
+       </p>
+       <p>
+        • Send take-home challenges to qualified candidates
+       </p>
+       <p>
+        • Review submissions with hiring team
+       </p>
+      </div>
+     </div>
+     <div class="timeline-item">
+      <div class="timeline-marker">
+       3
+      </div>
+      <div class="timeline-content">
+       <h4>
+        Week 3: Team Interviews
+       </h4>
+       <p>
+        • Host 2-3 finalists for in-person team interviews
+       </p>
+       <p>
+        • Include culture fit sessions with founders
+       </p>
+       <p>
+        • Gather team feedback and debrief
+       </p>
+      </div>
+     </div>
+     <div class="timeline-item">
+      <div class="timeline-marker">
+       4
+      </div>
+      <div class="timeline-content">
+       <h4>
+        Week 4: Close the Deal
+       </h4>
+       <p>
+        • Conduct reference checks on top candidate
+       </p>
+       <p>
+        • Prepare competitive offer package
+       </p>
+       <p>
+        • Negotiate and secure acceptance
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Market Insights -->
+   <section class="strategy-section" id="insights">
+    <div class="section-header">
+     <div class="section-icon">
+      💡
+     </div>
+     <h2>
+      Market Intelligence
+     </h2>
+    </div>
+    <div class="key-insights">
+     <div class="insight-card">
+      <h3>
+       💰 Compensation Benchmarks
+      </h3>
+      <p>
+       <strong>
+        Base Salary:
+       </strong>
+       $150K - $180K
+      </p>
+      <p>
+       <strong>
+        Equity:
+       </strong>
+       0.25% - 0.5%
+      </p>
+      <p>
+       <strong>
+        Sign-on:
+       </strong>
+       $10K - $25K for top talent
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+       *Based on Series A NYC fintech market
+      </p>
+     </div>
+     <div class="insight-card">
+      <h3>
+       🏃 Competitive Landscape
+      </h3>
+      <p>
+       <strong>
+        Key Competitors:
+       </strong>
+      </p>
+      <ul style="font-size: 0.875rem; margin-top: 0.5rem;">
+       <li>
+        • Ramp (aggressive hiring)
+       </li>
+       <li>
+        • Mercury (remote-first)
+       </li>
+       <li>
+        • Modern Treasury (similar stage)
+       </li>
+       <li>
+        • Brex (higher comp packages)
+       </li>
+      </ul>
+     </div>
+     <div class="insight-card">
+      <h3>
+       ⏰ Timing Factors
+      </h3>
+      <p>
+       <strong>
+        Positive:
+       </strong>
+       Q1 is peak job-seeking season
+      </p>
+      <p>
+       <strong>
+        Consider:
+       </strong>
+       March equity vesting cliffs
+      </p>
+      <p>
+       <strong>
+        Risk:
+       </strong>
+       Counter-offers likely for top talent
+      </p>
+      <p>
+       <strong>
+        Opportunity:
+       </strong>
+       Post-holiday clarity on career goals
+      </p>
+     </div>
+     <div class="insight-card">
+      <h3>
+       🎯 Success Metrics
+      </h3>
+      <p>
+       <strong>
+        Response Rate:
+       </strong>
+       Target 70%+
+      </p>
+      <p>
+       <strong>
+        Interview Conversion:
+       </strong>
+       50% to screening
+      </p>
+      <p>
+       <strong>
+        Take-Home Completion:
+       </strong>
+       5+ candidates
+      </p>
+      <p>
+       <strong>
+        Offer Acceptance:
+       </strong>
+       Close within 30 days
+      </p>
+     </div>
+    </div>
+   </section>
+   <!-- Risk Mitigation -->
+   <section class="strategy-section">
+    <div class="section-header">
+     <div class="section-icon">
+      🛡️
+     </div>
+     <h2>
+      Risk Mitigation &amp; FAQ Prep
+     </h2>
+    </div>
+    <div class="strategy-grid">
+     <div class="strategy-card">
+      <h3>
+       Common Concerns &amp; Responses
+      </h3>
+      <p style="margin-bottom: 1rem; font-size: 0.875rem;">
+       Be prepared to address:
+      </p>
+      <p>
+       <strong>
+        "Why leave my current stable role?"
+       </strong>
+      </p>
+      <ul style="font-size: 0.875rem; margin-bottom: 1rem;">
+       <li>
+        Rare opportunity to build from scratch
+       </li>
+       <li>
+        Direct impact on company trajectory
+       </li>
+       <li>
+        Equity upside in high-growth startup
+       </li>
+      </ul>
+      <p>
+       <strong>
+        "What about startup risk?"
+       </strong>
+      </p>
+      <ul style="font-size: 0.875rem; margin-bottom: 1rem;">
+       <li>
+        $5M+ ARR with 130+ paying customers
+       </li>
+       <li>
+        Strong Series A backing
+       </li>
+       <li>
+        Blue-chip clients including banks
+       </li>
+      </ul>
+      <p>
+       <strong>
+        "Work-life balance concerns?"
+       </strong>
+      </p>
+      <ul style="font-size: 0.875rem;">
+       <li>
+        Unlimited PTO policy
+       </li>
+       <li>
+        Mental health support via Spill
+       </li>
+       <li>
+        Team that values sustainability
+       </li>
+      </ul>
+     </div>
+     <div class="strategy-card">
+      <h3>
+       Closing Strategies
+      </h3>
+      <p style="font-size: 0.875rem;">
+       <strong>
+        For fence-sitters:
+       </strong>
+      </p>
+      <ul style="font-size: 0.875rem; margin-bottom: 1rem;">
+       <li>
+        Offer to connect with current team members
+       </li>
+       <li>
+        Share customer success stories
+       </li>
+       <li>
+        Highlight recent product milestones
+       </li>
+      </ul>
+      <p style="font-size: 0.875rem;">
+       <strong>
+        For competitive situations:
+       </strong>
+      </p>
+      <ul style="font-size: 0.875rem; margin-bottom: 1rem;">
+       <li>
+        Emphasize unique AI/LLM technology
+       </li>
+       <li>
+        Flexibility on start date
+       </li>
+       <li>
+        Consider sign-on bonus
+       </li>
+      </ul>
+      <p style="font-size: 0.875rem;">
+       <strong>
+        Final push tactics:
+       </strong>
+      </p>
+      <ul style="font-size: 0.875rem;">
+       <li>
+        Founder call to show commitment
+       </li>
+       <li>
+        Office visit to meet the team
+       </li>
+       <li>
+        24-hour decision timeline
+       </li>
+      </ul>
+     </div>
+    </div>
+   </section>
+  </div>
+  <!-- Footer -->
+  <footer class="footer">
+   <div class="footer-note">
+    <p>
+     <strong>
+      Note on Methodology:
+     </strong>
+     Candidates were selected based on likely profile matches for Heron's specific needs: startup experience, systems-thinking, NYC presence, and cultural fit. With additional time, I would conduct deeper background research, identify mutual connections, and create individualized outreach sequences.
+    </p>
+    <p style="margin-top: 2rem; font-size: 0.75rem; opacity: 0.7;">
+     This presentation demonstrates strategic thinking beyond just listing candidates - showing market understanding, 
+                competitive positioning, and a clear execution plan. The interactive format itself showcases the attention to 
+                detail and "pilot not passenger" mentality Heron values.
+    </p>
+   </div>
+  </footer>
+  <script>
+   // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                
+                // Update active nav item
+                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Intersection Observer for nav highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        const observerOptions = {
+            rootMargin: '-20% 0px -70% 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navItems.forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('href') === `#${id}`) {
+                            item.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        sections.forEach(section => observer.observe(section));
+        
+        // Add subtle animations on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.candidate-card, .strategy-card, .insight-card');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                if (isVisible && !el.classList.contains('animated')) {
+                    el.classList.add('animated');
+                    el.style.animation = 'fadeInUp 0.6s ease-out';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Initial check
+        
+        // Add fade in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+  </script>
+ </body>
+</html>
